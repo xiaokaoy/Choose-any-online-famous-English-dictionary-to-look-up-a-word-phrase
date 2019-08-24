@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+
+window.onload = function() {
+
+document.getElementById("inputWord").focus();
+
+};
+
+
+function searchall(){
+searchOneDictionary("https://www.ldoceonline.com/dictionary/");
+searchOneDictionary("https://dictionary.cambridge.org/dictionary/english/");
+searchOneDictionary("https://dictionary.cambridge.org/dictionary/english-chinese-simplified/");
+searchOneDictionary("https://www.collinsdictionary.com/dictionary/english/");
+searchOneDictionary("http://learnersdictionary.com/definition/");
+searchOneDictionary("https://www.macmillandictionary.com/dictionary/british/");
+searchOneDictionary("https://www.oxfordlearnersdictionaries.com/definition/english/");
+searchOneDictionary("https://www.lexico.com/en/definition/");
+
+}
+
+function searchOneDictionary(urlPrefix){
+var originalword = document.getElementById("inputWord").value;
+
+var word = originalword.replace(/ /g, "-");
+var wholeUrl = urlPrefix + word;
+window.open(wholeUrl);
+document.getElementById("inputWord").select();
+}
+
+</script>
+</head>
+
+<body>
+
+
+Look up
+<input type = "text" id = "inputWord" size = 50 > in:
+
+<input type = "button" id = "longman" value = "Longman (default)"     onclick = searchOneDictionary("https://www.ldoceonline.com/dictionary/")>
+
+<p>
+<input type = "button" value = "All"         onclick = searchall()>
+</p>
+
+<p>
+<input type = "button" value = "Cambridge (Monolingual)"   onclick = searchOneDictionary("https://dictionary.cambridge.org/dictionary/english/")>
+<input type = "button" value = "Cambridge (Bilingual)"   onclick = searchOneDictionary("https://dictionary.cambridge.org/dictionary/english-chinese-simplified/")>
+</p>
+
+<p>
+<input type = "button" value = "Collins"     onclick = searchOneDictionary("https://www.collinsdictionary.com/dictionary/english/")>
+<input type = "button" value = "Learners"    onclick = searchOneDictionary("http://learnersdictionary.com/definition/")>
+<input type = "button" value = "Macmillan"   onclick = searchOneDictionary("https://www.macmillandictionary.com/dictionary/british/")>
+<input type = "button" value = "Oxford"      onclick = searchOneDictionary("https://www.oxfordlearnersdictionaries.com/definition/english/")>
+</p>
+
+<p>
+<input type = "button" value = "Lexicon"     onclick = searchOneDictionary("https://www.lexico.com/en/definition/")>
+</p>
+
+<p>
+<input type = "button" value = "English->Chinese"  onclick = searchOneDictionary("https://translate.google.com/#view=home&op=translate&sl=en&tl=zh-CN&text=")>
+<input type = "button" value = "Chinese->English"  onclick = searchOneDictionary("https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=")>
+</p>
+</p>
+<p>
+<input type = "button" value = "Collocation" onclick = searchOneDictionary("http://www.freecollocation.com/search?word=")>
+</p>
+
+
+<p id="debug"> </p>
+<script>
+var inputWordBox = document.getElementById("inputWord");
+inputWordBox.addEventListener("keyup", function(event){
+
+
+if (event.keyCode == 13){
+// document.getElementById("debug").innerHTML = "input word is: "+document.getElementById("inputWord").value;
+// event.preventDefault();
+document.getElementById("longman").click();
+// document.getElementById("debug").innerHTML = "!!!!!!!!!!!";
+}
+});
+</script>
+</body>
+</html>
+
