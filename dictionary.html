@@ -25,7 +25,8 @@ searchOneDictionary("https://www.lexico.com/en/definition/");
 
 function searchOneDictionary(urlPrefix){
 var originalword = document.getElementById("inputWord").value;
-
+originalword = originalword.trim();
+  
 var word = originalword.replace(/ /g, "-");
 var wholeUrl = urlPrefix + word;
 window.open(wholeUrl);
